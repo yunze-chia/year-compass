@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YearCompass</title>
+    
+    
+  <script type="module" crossorigin src="/assets/index.916b061d.js"></script>
+  <link rel="stylesheet" href="/assets/index.dd6e17f5.css">
+</head>
+
+<body class="bg-gray-900 text-gray-200 flex justify-center">
+    <div x-data="{ tab: 'past', selected: null }" class="p-4 min-w-full min-h-screen">
+        <nav class="flex gap-4">
+            <button class="text-xl font-bold" x-on:click="tab = 'past'; selected = null"
+                x-bind:class="tab != 'past' ? 'text-gray-500' : ''">The
+                Past Year</button>
+            <button class="text-xl font-bold" x-on:click="tab = 'ahead'; selected = null"
+                x-bind:class="tab != 'ahead' ? 'text-gray-500' : ''">The
+                Year Ahead</button>
+            <button class="text-xl font-bold" x-on:click="tab = 'random'; selected = null"
+                x-bind:class="tab != 'random' ? 'text-gray-500' : ''">Random</button>
+        </nav>
+        <div class="flex flex-col gap-2 mt-2">
+
+            <template x-if="tab == 'random'">
+                <div x-data="{ scope: 'Any' }">
+                    <select class="p-2 bg-gray-700 outline-1" x-model="scope">
+                        <option>Any</option>
+                        <option>Past</option>
+                        <option>Ahead</option>
+                    </select>
+                    <button class="p-1.5 px-4 bg-gray-700" x-on:click="selected = selectRandom(scope)">Go</button>
+                </div>
+            </template>
+
+            <div class="border p-2" x-show="tab == 'past' || selected == 'past-0'">
+                <p class="italic">Going through your calendar</p>
+                <p class="font-light">Go through last year's calendar week by week. If you see an important event,
+                    family gathering, friendly get-together or a significant project, write it down here.</p>
+            </div>
+
+            <div class="border p-2" x-show="tab == 'past' || selected == 'past-1'">
+                <p class="italic">This is what my last year was about</p>
+                <p class="font-light">We live our lives through distinct but interconnected aspects. Take a look at the
+                    areas below and ask yourself what the significant events in each of them were. Write down your
+                    answers.</p>
+                <ul>
+                    <li>Personal life, Family</li>
+                    <li>Career, Studies</li>
+                    <li>Friends, Community</li>
+                    <li>Relaxation, Hobbies, Creativity</li>
+                    <li>Physical health, Fitness</li>
+                    <li>Mental health, Self-knowledge</li>
+                    <li>Habits that define you</li>
+                    <li x-data="{ showNote: false}" x-on:click="showNote = ! showNote">A better tomorrow*
+                        <p class="text-xs" x-show="showNote">*What did you do this year to leave the world in a better
+                            shape than you found it?</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="border p-2" x-show="tab == 'past' || selected == 'past-2'">
+                <p class="italic">Six sentences about my past year</p>
+                <ul>
+                    <li>The wisest decision I made...</li>
+                    <li>The biggest lesson I learned...</li>
+                    <li>The biggest risk I took...</li>
+                    <li>The biggest surprise of the year...</li>
+                    <li>The most important thing I did for others...</li>
+                    <li>The biggest thing I completed...</li>
+                </ul>
+            </div>
+
+            <div class="border p-2" x-show="tab == 'past' || selected == 'past-3'">
+                <p class="italic">Six questions about my past year</p>
+                <ul>
+                    <li>What are you most proud of?</li>
+                    <li>Who are the three people who influenced you the most?</li>
+                    <li>Who are the three people you influenced the most?</li>
+                    <li>What were you not able to accomplish?</li>
+                    <li>What is the best thing you have discovered about yourself ?</li>
+                    <li>What are you most grateful for?</li>
+                </ul>
+            </div>
+
+            <div class="border p-2" x-show="tab == 'past' || selected == 'past-4'">
+                <p class="italic">The best moments</p>
+                <p class="font-light">Describe the greatest and most memorable, joyful moments from last year. Draw them
+                    on this sheet. How did you feel? Who was there with you? What were you doing? What kind of smells,
+                    sounds or tastes do you remember?</p>
+            </div>
+
+            <div class="border p-2" x-show="tab == 'past' || selected == 'past-5'">
+                <p class="italic">Three of my biggest accomplishments</p>
+                <ul>
+                    <li>List your three greatest accomplishments from last year here.</li>
+                    <li>What did you do to achieve these?</li>
+                    <li>Who helped you achieve these successes? How?</li>
+                </ul>
+            </div>
+
+            <div class="border p-2" x-show="tab == 'past' || selected == 'past-6'">
+                <p class="italic">Three of my biggest challenges</p>
+                <ul>
+                    <li>List your three biggest challenges from last year here.</li>
+                    <li>Who or what helped you overcome these challenges?</li>
+                    <li>What have you learned about yourself by overcoming these challenges?</li>
+                </ul>
+            </div>
+
+            <div class="border p-2" x-show="tab == 'past' || selected == 'past-7'">
+                <p class="italic">Forgiveness</p>
+                <div class="font-light" x-data="{ showNote: false}" x-on:click="showNote = ! showNote">Did anything
+                    happen during the past year that still needs to be forgiven? Deeds or words that made you feel bad?
+                    Or are you angry with yourself? Write it down here. Do yourself good by forgiving.*
+                    <p class="text-xs" x-show="showNote">*If you don't feel ready to forgive yet, jot it down
+                        anyway. It
+                        can work wonders.</p>
+                </div>
+            </div>
+
+            <div class="border p-2" x-show="tab == 'past' || selected == 'past-8'">
+                <p class="italic">Letting go</p>
+                <p class="font-light">Is there anything else you need to say? Is there anything you have to let go of
+                    before you can start your next year? Draw or write, then think about it and let it all go.</p>
+            </div>
+
+            <div class="border p-2" x-show="tab == 'past' || selected == 'past-9'">
+                <p class="italic">The past year in three words</p>
+                <p class="font-light">Choose three words to define your past year.</p>
+            </div>
+
+            <div class="border p-2" x-show="tab == 'past' || selected == 'past-10'">
+                <p class="italic">The book of my past year</p>
+                <p class="font-light">A book or a movie was made about your past year. What title would you give it?
+                </p>
+            </div>
+
+            <div class="border p-2" x-show="tab == 'past' || selected == 'past-11'">
+                <p class="italic">Goodbye to your last year</p>
+                <p class="font-light">If there is anything else left that you would like to write down, or there is
+                    anybody you would like to say goodbye to, do it now.</p>
+            </div>
+
+            <div class="border p-2" x-show="tab == 'ahead' || selected == 'ahead-0'">
+                <p class="italic">Dare to dream big</p>
+                <p class="font-light">What does the year ahead of you look like? Why will it be great? What would happen
+                    in an ideal world? Write, draw, let go of your expectations and dare to dream.</p>
+            </div>
+
+            <div class="border p-2" x-show="tab == 'ahead' || selected == 'ahead-1'">
+                <p class="italic">This is what my next year will be about</p>
+                <p class="font-light">Take a look at the areas of your life and decide your goals for each of them for
+                    the next year. Put those goals on the page—this is the first step towards realizing them.</p>
+                <ul>
+                    <li>Personal life, Family</li>
+                    <li>Career, Studies</li>
+                    <li>Friends, Community</li>
+                    <li>Relaxation, Hobbies, Creativity</li>
+                    <li>Physical health, Fitness</li>
+                    <li>Mental health, Self-knowledge</li>
+                    <li>Habits that define you</li>
+                    <li x-data="{ showNote: false}" x-on:click="showNote = ! showNote">A better tomorrow*
+                        <p class="text-xs" x-show="showNote">*What did you do this year to leave the world in a
+                            better
+                            shape than you found it?</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="border p-2" x-show="tab == 'ahead' || selected == 'ahead-2'">
+                <p class="italic">Magical triplets for the year ahead</p>
+                <ul>
+                    <li>I will love these three things about myself.</li>
+                    <li>I am ready to let go of these three things.</li>
+                    <li>I want to achieve these three things the most.</li>
+                    <li>These three people will be my pillars during rough times.</li>
+                    <li>I will dare to discover these three things.</li>
+                    <li>I will have the power to say no to these three things.</li>
+                    <li>I will make my surroundings cozy with these three things.</li>
+                    <li>I will do these three things every morning.</li>
+                    <li>I will pamper myself with these three things regularly.</li>
+                    <li>I will visit these three places.</li>
+                    <li>I will connect with my loved ones in these three ways.</li>
+                    <li>I will reward my successes with these three presents.</li>
+                </ul>
+            </div>
+
+            <div class="border p-2" x-show="tab == 'ahead' || selected == 'ahead-3'">
+                <p class="italic">Six sentences about my next year</p>
+                <ul>
+                    <li>This year I will not procrastinate any more over...</li>
+                    <li>This year I will draw the most energy from...</li>
+                    <li>This year, I will be bravest when...</li>
+                    <li>This year I will say yes when...</li>
+                    <li>This year I advise myself to...</li>
+                    <li>This year will be special for me because...</li>
+                </ul>
+            </div>
+
+            <div class="border p-2" x-show="tab == 'ahead' || selected == 'ahead-4'">
+                <p class="italic">My word for the year ahead</p>
+                <p class="font-light">Pick a word to symbolise and define the year ahead. You can look at this word if
+                    you need some extra energy, so you remember not to give up your dreams.</p>
+            </div>
+
+            <div class="border p-2" x-show="tab == 'ahead' || selected == 'ahead-5'">
+                <p class="italic">Secret wish</p>
+                <p class="font-light">Unleash your mind. What is your secret wish for the next year?</p>
+            </div>
+
+        </div>
+        <footer class="text-xs mt-2 text-gray-500">Content from yearcompass.com</footer>
+    </div>
+    <script>
+        const selectRandom = (scope) => {
+            var items = []
+            if (["Any", "Past"].includes(scope)) {
+                const past = Array.from(Array(12).keys()).map(i => `past-${i}`)
+                items = items.concat(past)
+            }
+            if (["Any", "Ahead"].includes(scope)) {
+                const ahead = Array.from(Array(6).keys()).map(i => `ahead-${i}`)
+                items = items.concat(ahead)
+            }
+            const rand = Math.floor(Math.random() * items.length)
+            const result = items[rand]
+            console.log(result)
+            return result
+        }
+    </script>
+</body>
+
+</html>
