@@ -1,7 +1,7 @@
 {
   "scripts": {
     "serve": "vite assets",
-    "build": "vite build assets --outDir ../docs --emptyOutDir",
+    "build": "vite build assets --outDir ../docs --emptyOutDir --base ./",
     "clean": "rm -rf docs/"
   },
   "devDependencies": {
