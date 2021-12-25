@@ -1,7 +1,7 @@
 {
   "scripts": {
     "serve": "vite assets",
-    "build": "vite build assets --outDir ../docs --emptyOutDir --base ./",
+    "build": "vite build assets --outDir ../docs --emptyOutDir --base ./ && touch docs/.nojekyll",
     "clean": "rm -rf docs/"
   },
   "devDependencies": {
