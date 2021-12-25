@@ -1,8 +1,8 @@
 {
   "scripts": {
     "serve": "vite assets",
-    "build": "vite build assets --outDir ../dist --emptyOutDir",
-    "clean": "rm -rf dist/"
+    "build": "vite build assets --outDir ../docs --emptyOutDir",
+    "clean": "rm -rf docs/"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",
